@@ -63,7 +63,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-         <Link className=" bg-white py-2 px-4 text-1xl text-blue-700 font-bold rounded-lg mx-3 hover:bg-slate-200">LOGIN</Link>
+         <Link to ='/login' className=" bg-white py-2 px-4 text-1xl text-blue-700 font-bold rounded-lg mx-3 hover:bg-slate-200">LOGIN</Link>
          <Link className=" bg-white py-2 px-4 text-1xl text-blue-700 font-bold rounded-lg mx-3 hover:bg-slate-200">REGISTER</Link>
          <input type="checkbox" className="toggle border-none" checked />
         </div>

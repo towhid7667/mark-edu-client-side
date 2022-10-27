@@ -5,6 +5,7 @@ import Categories from "../../Pages/Categories/Categories";
 import CategoryCourse from "../../Pages/Categories/CategoryCourse";
 import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
 import Courses from "../../Pages/Courses/Courses";
+import Login from "../../Pages/Log in/Login";
 
 
 export const router = createBrowserRouter([
@@ -52,6 +53,12 @@ export const router = createBrowserRouter([
                     return fetch(`https://mark-edu-server-side.vercel.app/category/${params.id}`)
                 },
                 element : <CategoryCourse></CategoryCourse>
+                
+            },
+            
+            {
+                path : '/login',
+                element : <Login></Login>
                 
             },
             
