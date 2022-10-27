@@ -6,6 +6,8 @@ import CategoryCourse from "../../Pages/Categories/CategoryCourse";
 import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
 import Courses from "../../Pages/Courses/Courses";
 import Login from "../../Pages/Log in/Login";
+import Register from "../../Pages/Register/Register";
+import PrivateRoute from './../PrivateRouter/PrivateRoute';
 
 
 export const router = createBrowserRouter([
@@ -15,6 +17,10 @@ export const router = createBrowserRouter([
         children:[
             {
                 path : '/',
+                element: <Home></Home>
+            },
+            {
+                path : '/home',
                 element: <Home></Home>
             },
             {
@@ -38,7 +44,7 @@ export const router = createBrowserRouter([
                 loader: async({params})=> {
                     return fetch(`https://mark-edu-server-side.vercel.app/courses/${params.id}`)
                 },
-                element : <CourseDetails></CourseDetails>
+                element : <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>
                 
             },
             {
@@ -59,6 +65,12 @@ export const router = createBrowserRouter([
             {
                 path : '/login',
                 element : <Login></Login>
+                
+            },
+            
+            {
+                path : '/register',
+                element : <Register></Register>
                 
             },
             

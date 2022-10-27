@@ -1,4 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate, Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -7,66 +9,50 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper";
-import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from './../../ContextProvider/ContextProvider';
-import { toast } from 'react-hot-toast';
-import { FaGoogle } from "react-icons/fa";
-import { GoogleAuthProvider } from 'firebase/auth';
+import { AuthContext } from '../../ContextProvider/ContextProvider';
 
-const Login = () => {
-  const [error, setError] = useState("");
+const Register = () => {
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const [accepted, setAccepted] = useState(false);
 
-  const { signIn, setLoading , googleSignIN } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const location = useLocation();
+    const {createUser, updateUserProfile, verifyEmail} = useContext(AuthContext);
 
-  const from = location.state?.from?.pathname || "/";
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
 
-  const handlegoogleSignIn = event => {
-    event.preventDefault();
-    const provider = new GoogleAuthProvider()
-    googleSignIN(provider)
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-      setError("");
-        if (user.emailVerified) {
-          navigate(from, { replace: true });
-        } else {
-          toast.error('please verify your email')
-        }
-    })
-    .catch((error) => setError(error.message))
-    .finally(() => {
-        setLoading(false);
-      });
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            setError('');
+            navigate('/home')
+           
+            handleEmailVerification();
+            toast.success('Please verify your email')
+            
+        })
+        .catch(error => setError(error.message))
+
+
     }
-  const handleSignIn = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
 
-    signIn(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        form.reset();
-        setError("");
-        if (user.emailVerified) {
-          navigate(from, { replace: true });
-        } else {
-          toast.error('please verify your email')
-        }
-      })
-      .catch((error) => setError(error.message))
-      .finally(() => {
-        setLoading(false);
-      });
-  };
 
-  return (
-    <form onSubmit={ handleSignIn} className="bg-orange-400 ">
+
+const handleEmailVerification = () =>{
+  verifyEmail()
+  .then (()=> {})
+  .catch(error => console.error(error))
+}
+    return (
+        <div>
+            <form onSubmit={ handleSubmit} className="bg-orange-400 ">
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse ">
           <div className=" w-5/12 -my-10  rounded-xl h-34 mx-auto shadow-2xl">
@@ -113,6 +99,28 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
+                  <span className="label-text">Phot URL</span>
+                </label>
+                <input
+                  name="photoURL"
+                  type="text"
+                  placeholder="your photo URL"
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="your name"
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
@@ -128,17 +136,15 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary my-3">Login</button>
-                <button onClick={ handlegoogleSignIn} className="btn btn-primary"><FaGoogle className="mx-2"></FaGoogle>Google</button>
+                <button className="btn btn-primary">Register</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </form>
-  );
+        </div>
+    );
 };
 
-
-
-export default Login;
+export default Register;

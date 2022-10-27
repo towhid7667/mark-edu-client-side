@@ -20,7 +20,7 @@ const Home = () => {
            MONTH OF <span className="text-blue-700 font-bold text-[80px]">MARK EDU</span>
           </span>
         </p>
-        <Link className=" bg-white py-3 px-5 text-1xl text-blue-700 font-bold rounded-lg mx-3 hover:bg-slate-200">REGISTER</Link>
+        <Link to='/register' className=" bg-white py-3 px-5 text-1xl text-blue-700 font-bold rounded-lg mx-3 hover:bg-slate-200">REGISTER</Link>
       </div>
       <div className=" w-5/12 -my-10  rounded-xl h-34 mx-auto shadow-2xl">
       <Swiper
