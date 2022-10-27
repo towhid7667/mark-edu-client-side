@@ -28,10 +28,10 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shado text-white rounded-box w-52 font-semibold"
             >
               <li>
-               <Link>Home</Link>
+               <Link to='/'>Home</Link>
               </li>
               <li tabIndex={0}>
-               <Link className="justify-between">
+               <Link to= '/courses' className="justify-between">
                   Courses
                 </Link> 
               </li>
@@ -43,15 +43,15 @@ const Header = () => {
               </li>
             </ul>
           </div>
-         <Link className="btn btn-ghost normal-case text-xl font-bold "><span className="bg-white px-3 py-2 rounded-lg font-bold text-blue-700">Mark </span><span className="text-white mx-1">EDU</span></Link>
+         <Link to='/' className="btn btn-ghost normal-case text-xl font-bold "><span className="bg-white px-3 py-2 rounded-lg font-bold text-blue-700">Mark </span><span className="text-white mx-1">EDU</span></Link>
         </div>
         <div className="navbar-center hidden lg:flex lg:text-white font-semibold">
           <ul className="menu menu-horizontal p-0">
             <li>
-             <Link>Home</Link>
+             <Link to='/'>Home</Link>
             </li>
             <li tabIndex={0}>
-             <Link>Courses</Link>
+             <Link to='/courses'>Courses</Link>
              
             </li>
             <li>
@@ -65,6 +65,7 @@ const Header = () => {
         <div className="navbar-end">
          <Link className=" bg-white py-2 px-4 text-1xl text-blue-700 font-bold rounded-lg mx-3 hover:bg-slate-200">LOGIN</Link>
          <Link className=" bg-white py-2 px-4 text-1xl text-blue-700 font-bold rounded-lg mx-3 hover:bg-slate-200">REGISTER</Link>
+         <input type="checkbox" className="toggle border-none" checked />
         </div>
       </div>
     </div>
