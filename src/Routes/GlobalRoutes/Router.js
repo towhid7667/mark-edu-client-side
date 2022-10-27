@@ -9,6 +9,7 @@ import Login from "../../Pages/Log in/Login";
 import Register from "../../Pages/Register/Register";
 import PrivateRoute from './../PrivateRouter/PrivateRoute';
 import Blog from './../../Pages/Blog/Blog';
+import FAQ from "../../Pages/FAQ/FAQ";
 
 
 export const router = createBrowserRouter([
@@ -78,6 +79,11 @@ export const router = createBrowserRouter([
             {
                 path : '/blogs',
                 element : <Blog></Blog>
+                
+            },
+            {
+                path : '/faq',
+                element : <FAQ></FAQ>
                 
             },
             
