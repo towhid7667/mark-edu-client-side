@@ -10,6 +10,7 @@ import Register from "../../Pages/Register/Register";
 import PrivateRoute from './../PrivateRouter/PrivateRoute';
 import Blog from './../../Pages/Blog/Blog';
 import FAQ from "../../Pages/FAQ/FAQ";
+import Four from "../../Pages/Others/Four";
 
 
 export const router = createBrowserRouter([
@@ -89,5 +90,9 @@ export const router = createBrowserRouter([
             
 
         ]
+    },
+    {
+        path: '*',
+        element: <Four></Four>
     }
 ])
