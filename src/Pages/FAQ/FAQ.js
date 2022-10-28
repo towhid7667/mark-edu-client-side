@@ -16,7 +16,7 @@ const FAQ = () => {
  
   return (
     <div className="bg-orange-400">
-        <div className="w-8/12 mx-auto py-10 text-white">
+        <div className="lg:w-8/12 w-10/12 mx-auto py-10 text-white mb-52 pt-24 lg:mb-0 lg:pt-10">
     <Fragment >
       <Accordion open={open === 1}>
         <AccordionHeader onClick={() => handleOpen(1)}>

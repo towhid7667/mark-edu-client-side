@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from './../../ContextProvider/ContextProvider';
 import { toast } from 'react-hot-toast';
 import { FaGoogle } from "react-icons/fa";
@@ -68,8 +68,8 @@ const Login = () => {
   return (
     <form onSubmit={ handleSignIn} className="bg-orange-400 ">
       <div className="hero min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse ">
-          <div className=" w-5/12 -my-10  rounded-xl h-34 mx-auto shadow-2xl">
+        <div className="hero-content flex-col lg:flex-row-reverse overflow-x-hidden lg:overflow-auto lg:mr-20">
+          <div className=" lg:w-5/12 w-4/12 -my-10   rounded-xl h-34 shadow-2xl hidden lg:block">
             <Swiper
               navigation={true}
               modules={[Navigation]}
@@ -98,7 +98,7 @@ const Login = () => {
               </SwiperSlide>
             </Swiper>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto">
+          <div className="card lg:flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 lg:mx-auto lg:mt-0 lg:mb-0 mt-24 mb-60 mx-3">
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -121,11 +121,13 @@ const Login = () => {
                   placeholder="password"
                   className="input input-bordered"
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
+               <div className="mt-5">
+               <p className="text-red-500">{error}</p>
+                <Link to='/register'>Do not have accout?</Link>
+               </div>
+               
+    
+                
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary my-3">Login</button>

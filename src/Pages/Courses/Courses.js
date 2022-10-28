@@ -17,8 +17,8 @@ const Courses = () => {
 
 
     return (
-        <div className='bg-orange-400 flex justify-center items-start gap-10'>
-            <div className='grid grid-cols-3 py-10 w-8/12 gap-10'>
+        <div className='bg-orange-400 flex justify-center flex-col-reverse lg:flex-row lg:items-start items-center lg:gap-10 lg:pt-0 lg:mb-0 pt-20 mb-56'>
+            <div className='grid lg:grid-cols-3 grid-cols-1 py-10 lg:w-8/12 w-10/12 gap-10'>
 
             
             {

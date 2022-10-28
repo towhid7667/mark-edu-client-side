@@ -48,14 +48,14 @@ const Register = () => {
 const handleEmailVerification = () =>{
   verifyEmail()
   .then (()=> {})
-  .catch(error => console.error(error))
+  .catch(error => setError(error))
 }
     return (
         <div>
             <form onSubmit={ handleSubmit} className="bg-orange-400 ">
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse ">
-          <div className=" w-5/12 -my-10  rounded-xl h-34 mx-auto shadow-2xl">
+          <div className=" w-5/12 -my-10  rounded-xl h-34 mx-auto shadow-2xl hidden lg:block">
             <Swiper
               navigation={true}
               modules={[Navigation]}
@@ -84,7 +84,7 @@ const handleEmailVerification = () =>{
               </SwiperSlide>
             </Swiper>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto">
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto lg:mb-0 mb-60 lg:mt-0 mt-20">
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -129,11 +129,10 @@ const handleEmailVerification = () =>{
                   placeholder="password"
                   className="input input-bordered"
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
+                
+                  
+                  <p className="text-red-500 my-5">{error}</p>
+               
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>

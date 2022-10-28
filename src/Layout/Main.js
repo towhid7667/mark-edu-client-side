@@ -7,7 +7,7 @@ import Hero from '../Pages/Shared/Header/Hero/Hero';
 const Main = () => {
     return (
         <div>
-            <Header></Header>
+            <Header ></Header>
             <Outlet></Outlet>
             <Hero></Hero>
             <Footer></Footer>
