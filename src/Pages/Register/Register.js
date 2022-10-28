@@ -16,7 +16,7 @@ const Register = () => {
     const navigate = useNavigate();
     const [accepted, setAccepted] = useState(false);
 
-    const {createUser, updateUserProfile, verifyEmail} = useContext(AuthContext);
+    const {createUser,  verifyEmail} = useContext(AuthContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
